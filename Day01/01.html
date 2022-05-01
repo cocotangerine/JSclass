@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/layout02.css" />
+    <!-- defer: body태그 아래쪽에 script 실행하는 것과 같다 -->
+  </head>
+  <body>
+    <script>
+      console.log("hello javascript");
+      //var: function scope를 지원한다
+      // let, const는 block scope를 지원한다. 보통의 언어는 block scope.
+      //scope 유효범위
+      let num02 = 20;
+      let name02 = "dodo"; //coding convention
+      console.log(num02);
+
+      //Object: data를 여러 개 담고 싶을 때
+      const yeji = {
+        name: "yeji",
+        age: 23,
+        marriage: false,
+        music: {
+          genre: "rock",
+          band: "spyair",
+        },
+      };
+      console.log(yeji.marriage);
+      console.log(yeji["age"]);
+      console.log(yeji.music.genre);
+
+      const animal = ["lion", "tiger", "dog"];
+      console.log(animal[0]);
+
+      const actors = [
+        { name: "강동원", movie: "검은 사제들" },
+        { name: "Brad Pitt", movie: "Fury" },
+      ];
+      console.log(actors[1].name);
+
+      console.log(7 % 3); //나머지: 1
+    </script>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>비만 계산</title>
+  </head>
+  <body>
+    <div>
+      <lable
+        ><span>키</span
+        ><input type="number" id="height" placeholder="키(cm)를 입력하세요"
+      /></lable>
+    </div>
+    <div>
+      <!-- prettier-ignore -->
+      <lable><span>몸무게</span><input type="number" id="weight" placeholder="몸무게(kg)를 입력하세요" /></lable>
+    </div>
+    <button id="btn">결과 보기</button>
+
+    <div id="result" class="result"></div>
+    <script>
+      //queryselect로 찾는 것은 const로 보통 쓴다.
+      const heightDom = document.querySelector("#height");
+      const weightDom = document.querySelector("#weight"); //값을 받아올 때
+      const height = Number(heightDom.value);
+      const weight = Number(weightDom.value);
+      const btnDom = document.querySelector("#btn");
+
+      const clickFunc = function () {
+        //함수가 선언만 돼있는 상태.
+        const height = Number(heightDom.value);
+        const weight = Number(weightDom.value);
+        if (height <= 0 && weight <= 0) {
+          alert("no value");
+        }
+        const fat = weight / ((height / 100) * (height / 100));
+        let biman;
+        if (fat >= 25) {
+          biman = "비만";
+        } else if (fat < 25 && fat > 23) {
+          biman = "과체중";
+        } else if (fat < 23 && fat > 18.5) {
+          biman = "정상";
+        } else {
+          biman = "저체중";
+        }
+        result.textContent = `당신의 비만도: ${fat}, ${biman}`;
+      };
+      //   clickFunc();
+      btnDom.addEventListener("click", clickFunc); //콜백!!(콜을 나중에. 실행 x.)
+      console.log(height);
+      const fat = weight / ((height / 100) * (height / 100));
+      //   console.log(fat); //Nan...?
+      console.log(height + weight); // 타입 변환(type casting) 안 하면 15048
+
+      //   document.querySelector("#result").textContent = fat; //NaN
+      const result = document.querySelector("#result");
+      //   result.textContent = fat;
+
+      //const clickFunc = function (e) {
+      //       e.preventDefalut();
+      //   }
+    </script>
+  </body>
+</html>

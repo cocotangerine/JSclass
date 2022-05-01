@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const current = new Date(); //날짜객체
+      console.log(current);
+      current.getDay();
+      const day = current.getDay();
+      //if statement
+      // if(day === 0) {
+      //     console.log('sunday');
+      // } else if (day === 1) {
+      //     console.log('monday');
+      // } else if (day === 2) {console.log('tuesday');} ;
+      const days = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
+      console.log(days[day]);
+      //데이터베이스 받아올 때 [{데이터}]의 형태로 받아오게 된다.
+      const result = [
+        { title: "공지사항", contents: "공지사항01입니다", date: "05-01" },
+        { title: "공지사항02", contents: "공지사항02입니다", date: "05-01" },
+        { title: "공지사항03", contents: "공지사항03입니다", date: "05-01" },
+        { title: "공지사항04", contents: "공지사항04입니다", date: "05-01" },
+      ];
+      for (let i = 0; i < result.length; i++) {
+        console.log(`${i}번째 title: ${result[i].title}
+        ${i}번째 contents: ${result[i].contents}
+        ${i}번째 date: ${result[i].date}`);
+      }
+
+      for (let j = 0; j < 10; j++) {}
+    </script>
+  </body>
+</html>

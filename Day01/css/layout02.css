@@ -1,0 +1,13 @@
+header {
+  background-color: #00f;
+}
+
+header h1 {
+  color: #3fcc5e;
+  font-weight: normal;
+}
+
+header h1 strong {
+  font-weight: bold;
+}
+/*# sourceMappingURL=layout02.css.map */

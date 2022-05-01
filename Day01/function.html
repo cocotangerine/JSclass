@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //함수 선언 function declaration
+      const result = add(3);
+      console.log(result); //hoisting
+      function add(num1, num2 = 10) {
+        return num1 * 2 + num2;
+      } //함수의 결과값을 돌려받고 싶을 때 return 사용. 함수가 return을 만나면 값 던지고 즉시 종료함.
+      console.log(add(3, 5));
+
+      //function expression: arrow function 가능
+      //   const avg = (kor, eng, math) => kor + eng + math / 3;
+      const avg = function (kor, eng, math) {
+        kor + eng + math / 3;
+      };
+      const resultAvg = avg(2, 3, 4);
+      console.log(resultAvg);
+    </script>
+  </body>
+</html>
