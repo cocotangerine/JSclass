@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/fancybox.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <script src="js/fancybox.umd.js"></script>
+    <script src="js/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <div class="searchForm">
+      <input type="text" placeholder="search image..." id="search" />
+      <button class="btn"><span class="material-icons"> search </span></button>
+    </div>
+    <ul class="resultList">
+      <li>
+        <a href="">
+          <img src="" alt="" />
+          <p></p>
+        </a>
+      </li>
+    </ul>
+
+    <script>
+      const resultList = $(".resultList");
+      const search = $("#search");
+      const btnSearch = $(".searchForm .btn"); //버튼누르면 에이젝스 콜
+      const loadImg = function () {
+        console.log(search.val());
+        const searchImg = search.val();
+        resultList.html("");
+        $.ajax({
+          url: `https://dapi.kakao.com/v2/search/image?query=${searchImg}&size=60`,
+          headers: {
+            Authorization: "KakaoAK b3e40a46c89475ce3bf4c409fb44db2e",
+          },
+        }).done(function (data) {
+          // console.log(data.documents); //401error: client오류
+          const documents = data.documents;
+          let tempHtml = "";
+          $.each(documents, function (idx, item) {
+            tempHtml += `<li>
+              <a href="${item.image_url}" data-fancybox="gallery" data-caption="${item.display_sitename}">
+                  <img src="${item.thumbnail_url}" alt="">
+              </a>
+          </li>`;
+          });
+          resultList.append(tempHtml); //문자열만 80개 생성을 해서 돔에 한번만 밀어넣기
+        });
+      };
+      //enter 눌렀을 때
+      search.on("keyup", function (e) {
+        // console.log(e);
+        if (e.keyCode === 13) {
+          loadImg();
+        }
+      });
+
+      //돋보기 버튼 눌렀을 때
+      btnSearch.on("click", function () {
+        loadImg();
+        //vanilla js
+        //   const search = document.querySelector("#search");
+        //   const btnSearch = document.querySelector(".searchForm .btn");
+        //   btnSearch.addEventListher("click", function () {
+        //     console.log(search.value);
+        //   });
+        //   $.ajax({
+        //     url: "https://dapi.kakao.com/v2/search/image?query=전지현&size=60",
+        //     headers: { Authorization: "KakaoAK b3e40a46c89475ce3bf4c409fb44db2e" },
+        //   }).done(function (data) {
+        //     // console.log(data.documents); //401error: client오류
+        //     const documents = data.documents;
+        //     let tempHtml = "";
+        //     $.each(documents, function (idx, item) {
+        //       tempHtml += `<li>
+        //           <a href="">
+        //               <img src="${item.thumbnail_url}" alt="">
+        //           </a>
+        //       </li>`;
+        //     });
+        // resultList.append(``) // 차이: 하나 생성하고 하나 집어넣고 반복
+      }); //이쪽으로 접속을 하면 - 데이터를 뿌려놓을게 약속.
+    </script>
+  </body>
+</html>

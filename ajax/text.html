@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="js/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <ul class="userList"></ul>
+    <!-- <li>
+            <h2>윤예지</h2>
+            <div class="info">
+                <dl>
+                    <dt>name</dt>
+                    <dd>25</dd>
+                </dl>
+                <dl>
+                    <dt>weight</dt>
+                    <dd>47</dd>
+                </dl>
+                <dl>
+                    <dt>nickname</dt>
+                    <dd>${item.nickname.join("/")}
+                    </dd>
+                </dl>
+            </div>
+        </li> -->
+    <script>
+      const userListDom = $(".userList");
+      $.ajax({ url: "test.json" }).done(function (data) {
+        // console.log(data.nickname);
+        //배열반복문
+        // const nickname = data.nickname;
+        const userList = data.userList;
+        console.log(userList);
+        $.each(userList, function (idx, item) {
+          //   console.log(idx, "===", item);
+          userListDom.append(`
+        <li>
+            <h2>${item.name}</h2>
+            <div class="info">
+                <dl>
+                    <dt>${item.age}e</dt>
+                    <dd>25</dd>
+                </dl>
+                <dl>
+                    <dt>${item.weight}</dt>
+                    <dd>47</dd>
+                </dl>
+                <dl>
+                    <dt>${item.nickname}</dt>
+                    <dd>${item.nickname.join("/")} 
+                    </dd>
+                </dl>
+            </div>
+        </li> `);
+          // console.log(object);
+          userListDom.append(`<li>${item}</li>`);
+        });
+        //vanilla script (배열반복문)
+        // nickname.forEach(function (item, idx) {
+        //   console.log(item);
+        // });
+        // .fail(function () {
+        //     alert("로딩 실패")
+        // })
+      });
+    </script>
+  </body>
+</html>

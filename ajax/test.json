@@ -1,0 +1,22 @@
+{
+  "userList": [
+    {
+      "name": "yeji",
+      "age": 25,
+      "weight": 47,
+      "nickname": ["야지", "옞이", "예짜"]
+    },
+    {
+      "name": "Carol",
+      "age": 25,
+      "weight": 47,
+      "nickname": ["야지", "옞이", "예짜"]
+    },
+    {
+      "name": "Lucy",
+      "age": 25,
+      "weight": 47,
+      "nickname": ["야지", "옞이", "예짜"]
+    }
+  ]
+}
